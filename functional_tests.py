@@ -16,7 +16,7 @@ class NewVisitorTest(unittest.TestCase):
         self.browser.get('http://localhost:8000')
 
         # 他注意到网页里包含“TO-DO” 这个词
-        self.assertIn('TO-DO',self.browser.title), "browser title was:" + self.browser.title
+        self.assertIn('To-Do',self.browser.title), "browser title was:" + self.browser.title
         self.fail('Finish the test!')
 
         #应用有一个输入代办事项的文本输入框

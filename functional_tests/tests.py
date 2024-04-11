@@ -3,8 +3,9 @@ from selenium.webdriver.common.keys import Keys
 import time
 import unittest
 from selenium.webdriver.common.by import By
+from django.test import LiveServerTestCase
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
     
     def setUp(self):
         self.browser = webdriver.Firefox ()
@@ -21,7 +22,7 @@ class NewVisitorTest(unittest.TestCase):
 
         # 张三听说有一个在线代办事项的应用
         # 他去看了这个应用的首页
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
 
         # 他注意到网页里包含“TO-DO” 这个词
         self.assertIn('To-Do',self.browser.title)
@@ -65,6 +66,3 @@ class NewVisitorTest(unittest.TestCase):
         #他访问那个URL，发现它的代办事项列表还在
         #他满意地离开了
 
-
-if __name__ == '__main__':
-    unittest.main()

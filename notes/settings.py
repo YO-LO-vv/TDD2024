@@ -32,6 +32,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1'
 ]
 
+# CSRF
+CSRF_TRUSTED_ORIGINS = ['http://192.168.50.117']
 
 # Application definition
 

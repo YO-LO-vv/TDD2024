@@ -45,7 +45,7 @@ def _update_settings(source_folder, site_name) :
 def _update_virtualenv(source_folder):
     virtualenv_folder = source_folder + '/ .. /virtualenv'
     if not exists(virtualenv_folder + '/bin/pip'): #(1)
-        run(f'python3.9 -m venv {virtualenv_folder}' )
+        run(f'python -m venv {virtualenv_folder}' )
     run(f'{virtualenv_folder}/bin/pip install -r {source_folder}/requirements.txt')
 
 def _update_static_files(source_folder):

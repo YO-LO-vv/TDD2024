@@ -8,6 +8,7 @@ REPO_URL = 'https://github.com/YO-LO-vv/TDD2024.git' #(1)
 def deploy():
     site_folder = f'/home/{env.user}/tdd2024/{env.host}'
     source_folder = site_folder + '/source'
+    run(f'cd {source_folder} && git fetch')
     _create_directory_structure_if_necessary(site_folder)
     _get_latest_source(source_folder)
     _update_settings(source_folder, env.host)
@@ -43,21 +44,21 @@ def _update_settings(source_folder, site_name) :
     append (settings_path, '\nfrom .secret_key import SECRET_KEY')
 
 def _update_virtualenv(source_folder):
-    virtualenv_folder = source_folder + '/ .. /virtualenv'
+    virtualenv_folder = source_folder + '/../virtualenv'
     if not exists(virtualenv_folder + '/bin/pip'): #(1)
-        run(f'python -m venv {virtualenv_folder}' )
-    run(f'{virtualenv_folder}/bin/pip install -r {source_folder}/requirements.txt')
+        run(f'python3 -m venv {virtualenv_folder}' )
+    run(f'{virtualenv_folder}/bin/pip3 install -r {source_folder}/requirements.txt -i https://mirrors.aliyun.com/pypi/simple/')
 
 def _update_static_files(source_folder):
     run (
         f'cd {source_folder}' #(1)
-        ' && .. /virtualenv/bin/python manage.py collectstatic -- noinput'
+        ' && ../virtualenv/bin/python manage.py collectstatic --noinput'
     )
 
 def _update_database(source_folder):
     run (
         f'cd {source_folder}'
-        ' && .. /virtualenv/bin/python manage.py migrate -- noinput'
+        ' && ../virtualenv/bin/python manage.py migrate --noinput'
     )
 
 if __name__== "__main__":

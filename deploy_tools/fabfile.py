@@ -8,7 +8,6 @@ REPO_URL = 'https://github.com/YO-LO-vv/TDD2024.git' #(1)
 def deploy():
     site_folder = f'/home/{env.user}/tdd2024/{env.host}'
     source_folder = site_folder + '/source'
-    run(f'cd {source_folder} && git fetch')
     _create_directory_structure_if_necessary(site_folder)
     _get_latest_source(source_folder)
     _update_settings(source_folder, env.host)

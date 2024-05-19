@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn server for 192.168.50.117
+
+[Service]
+Restart=on-failure
+User=abel
+WorkingDirectory=/home/abel/tdd2024/192.168.50.117/source
+ExecStart=/home/abel/tdd2024/192.168.50.117/virtualenv/bin/gunicorn--bind unix:/tmp/192.168.50.117.socket notes.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

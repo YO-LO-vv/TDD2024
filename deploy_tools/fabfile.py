@@ -3,7 +3,7 @@ from fabric.api import env, local, run
 import random
 
 REPO_URL = 'https://github.com/YO-LO-vv/TDD2024.git' #(1)
-#REPO_URL = 'git@github.com:YO-LO-vv/TDD2024.git'
+#REPO_URL = 'https://gitee.com/hannibalovo/spi.git'
 
 def deploy():
     site_folder = f'/home/{env.user}/tdd2024/{env.host}'
